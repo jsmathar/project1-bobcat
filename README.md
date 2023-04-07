@@ -1,11 +1,11 @@
 # Project 1: Bobcat
 
-<center>
-  <img src="./assets/bobcat.jpg" width="200px" />
-  <p>Photo by <a href="https://www.flickr.com/photos/becker271/2955468015" rel="noreferrer" target="_blank">Bucker1999</a></p>
-</center>
+<p align="center">
+  <img src="./assets/bobcat.jpg" width="200px" /><br>
+  <span>Photo by <a href="https://www.flickr.com/photos/becker271/2955468015" rel="noreferrer" target="_blank">Bucker1999</a></span>
+</p>
 
-Goal: This project serves as a refresher for building a software in the C programming language. In particular, the project will involve review of Linux system calls, buffering file I/O, memory management, etc.
+**GOAL**: This project serves as a refresher for building a software in the C programming language. In particular, the project will involve review of Linux system calls, buffering file I/O, memory management, etc.
 
 **IMPORTANT**: Please read [SETUP.md](./SETUP.md) on setting up the development environment.
 
