@@ -1,5 +1,5 @@
 CC=clang
-CFLAGS=-Wall -Wextra -std=c11 -pedantic
+CFLAGS=-Wall -Wextra -Werror -std=c11 -pedantic
 
 all: bobcat
 
