@@ -1,8 +1,8 @@
 #include <err.h>
 #include <fcntl.h>
 #include <stdbool.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #define BUFFER_SIZE 8192  // 8kb buffer for reading and writing
