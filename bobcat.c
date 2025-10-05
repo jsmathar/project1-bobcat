@@ -1,4 +1,5 @@
 #include <err.h>
+#include <errno.h>
 #include <fcntl.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -65,7 +66,7 @@ int main(int argc, char* argv[]) {
             warn("bobcat: -: Is a directory");
         }
         else{
-            warn("bobcat: read failed")
+            warn("bobcat: read failed");
         }
       had_error = true;
     }
