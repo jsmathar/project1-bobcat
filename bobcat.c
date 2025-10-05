@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
       }
     }
     if (bytes_read < 0) {
-      warn("read failed");
+      warn("-");
       return 1;
     }
     return 0;
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
       }
     }
     if (bytes_read < 0) {
-      warn("read failed");
+      warn("%s", current_arg);
       had_error = true;
     }
     // close the file if it was actually opened (not stdin) // and so no
