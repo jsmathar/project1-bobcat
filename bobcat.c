@@ -37,7 +37,14 @@ int main(int argc, char* argv[]) {
     } else {
       file_descriptor = open(current_arg, O_RDONLY);  // open in read-only
       if (file_descriptor < 0) {
-        warn("%s", current_arg);
+          // gradescope testcase fail
+          //check if it is a directory
+          if(errno == EISDIR) {
+              warn("bobcat: %s: Is a directory", current_arg);
+          }
+          else{
+              warn("bobcat: %s", current_arg);
+          }
         had_error = true;
         continue;
       }
@@ -53,7 +60,13 @@ int main(int argc, char* argv[]) {
       }
     }
     if (bytes_read < 0) {
-      warn("read failed");
+        // check direcotry
+        if(errno == EISDIR){
+            warn("bobcat: -: Is a directory");
+        }
+        else{
+            warn("bobcat: read failed")
+        }
       had_error = true;
     }
 
