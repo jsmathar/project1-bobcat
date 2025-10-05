@@ -1,4 +1,5 @@
 #include <err.h>
+#include <errno.h>
 #include <fcntl.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -53,7 +54,12 @@ int main(int argc, char* argv[]) {
       }
     }
     if (bytes_read < 0) {
-      warn("read failed");
+      if (file_descriptor == STDIN_FILENO && errno == EISDIR)
+        warn("bobcat: -: Is a directory");
+      else if (errno == EISDIR)
+        warn("bobcat: %s: Is a directory", current_arg);
+      else
+        warn("bobcat: read failed");
       had_error = true;
     }
 
