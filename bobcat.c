@@ -17,12 +17,12 @@ int main(int argc, char* argv[]) {
   if (argc == 1) {
     while ((bytes_read = read(STDIN_FILENO, buffer, BUFFER_SIZE)) > 0) {
       if (write(STDOUT_FILENO, buffer, bytes_read) != bytes_read) {
-        warn("write failed");
+        warnx("write failed");
         return 1;
       }
     }
     if (bytes_read < 0) {
-      warn("read failed");
+      warnx("read failed");
       return 1;
     }
     return 0;
@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
     } else {
       file_descriptor = open(current_arg, O_RDONLY);  // open in read-only
       if (file_descriptor < 0) {
-        warn("%s", current_arg);
+        warnx("%s", current_arg);
         had_error = true;
         continue;
       }
@@ -48,18 +48,18 @@ int main(int argc, char* argv[]) {
     // same as above, but stdout
     while ((bytes_read = read(file_descriptor, buffer, BUFFER_SIZE)) > 0) {
       if (write(STDOUT_FILENO, buffer, bytes_read) != bytes_read) {
-        warn("write failed");
+        warnx("write failed");
         had_error = true;
         break;
       }
     }
     if (bytes_read < 0) {
       if (file_descriptor == STDIN_FILENO && errno == EISDIR)
-        warn("bobcat: -: Is a directory");
+        warnx("bobcat: -: Is a directory");
       else if (errno == EISDIR)
-        warn("bobcat: %s: Is a directory", current_arg);
+        warnx("bobcat: %s: Is a directory", current_arg);
       else
-        warn("bobcat: read failed");
+        warnx("bobcat: read failed");
       had_error = true;
     }
 
@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
     // and so no memory is leaked
     if (file_descriptor != STDIN_FILENO) {
       if (close(file_descriptor) < 0) {
-        warn("%s", current_arg);
+        warnx("%s", current_arg);
         had_error = true;
       }
     }
